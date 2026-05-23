@@ -34,7 +34,7 @@ function Header (){
             <div id = "sombra"> </div>
 
             <header>
-                <div classList = "container header_conteudo">
+                <div className = "container header_conteudo">
                     <a href="#"
                         className="menu_barras"
                         id = "menu_barras"
