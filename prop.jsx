@@ -105,4 +105,16 @@ function FormularioLogin(){
              </button>
         </form>
     )
+
+}
+
+// estado com arrays
+const [ListaItens,setListaItens] = useState([]);
+
+function adicinaritem(novoItem){
+    setListaItens([...ListaItens,novoItem])
+}
+
+function removerItens(itemParaRemover){
+    setListaItens(ListaItens.filter(item => item != itemParaRemover))
 }
