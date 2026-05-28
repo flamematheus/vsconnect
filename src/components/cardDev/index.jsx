@@ -1,0 +1,36 @@
+import "./style.css";
+
+import { Link } from "react-router-dom";
+
+function CardDev (props){
+    function verificarListaTechs() {
+        if (typeof props.listatechs === "string") { 
+
+            return JSON.parse(props.listatechs)
+        }else{
+
+            return props.listatechs;
+
+        }
+        
+    }
+    return(
+        <div className="card_dev">
+
+            <div className="grupo_contado">
+                <img src={"http://localhost:3000/static/" + props.foto} alt="" />
+
+                <div className="contato_dev">
+                    <Link to ={"/perfil/" + props.id}>
+                        <h2>{props.nome}</h2>
+                    </Link>
+                    <p>{props.email}</p>
+                </div>
+            </div>
+
+            <div className="techs">
+                {verificarListaTechs()}
+            </div>
+        </div>
+    )
+}

@@ -118,3 +118,64 @@ function adicinaritem(novoItem){
 function removerItens(itemParaRemover){
     setListaItens(ListaItens.filter(item => item != itemParaRemover))
 }
+
+import { useEffect } from "react";
+
+function MeuComponente(){
+    useEffect(()=>{ 
+        console.log("componente carregado")
+
+    },[])
+
+    return <div>...</div>
+
+}
+
+import { useState,useEffect } from "react";
+import api from "../../utils/api";
+
+
+function ListaServicos(){
+    const [servicos,setServicos] = useState([]);
+
+    function buscarServicos(){ 
+       api.get("servicos")
+        //http://localhost:3000/servicos
+
+        .then((response)=>{
+            setServicos(response.data);
+        })  
+        .catch((error)=>{
+            console.log("Erro :",error)
+        })
+
+    }
+
+    useEffect(()=>{
+        buscarServicos();
+    },[])
+
+    return(
+        <ul>
+            {servicos.map((servico,index)=>(
+                <li kay = {index}>
+                    {servico.nome}
+
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+function CadastrarUsuario(event){
+    event.preventDeFault();
+
+    const FormData = new FormData();
+
+    FormData.append("nome",nome);
+    FormData.append("email",email);
+    FormData.append("user_img",foto);
+
+    api.post("users",FormData)
+,
+}
