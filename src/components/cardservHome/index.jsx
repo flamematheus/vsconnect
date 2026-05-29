@@ -1,44 +1,38 @@
-import"./style.css"
-
+import "./style.css";
 import imgAlfinete from "../../assets/images/alfinete.png";
 
-function CardServHome(props){
+function CardServHome(props) {
+    function verificaValor() {
+        let propostaFormatada = props.proposta;
 
-    function FormatarValor() {
-        const valor = parseFloat(props.proposta);
-
-        return valor.toLocaleString("pt-BR",
-            {
-                style:"currency", 
-                currency:"BRL"
-            }
-        )
-    }
-    function LimitarTexto(texto,limite){
-
-        if (texto.length >= limite) {
-
-            return texto.substring(0,limite ) + "..."
-            
+        if (typeof props.proposta === "string") {
+            propostaFormatada = parseFloat(props.proposta);
         }
-        return texto;
+
+        return propostaFormatada.toLocaleString('pt-BR', { style: "currency", currency: "BRL" });
     }
+
+    function limitadorCaracteres(texto, quantidadeCaracter) {
+        let novoTexto = texto;
+        let arrayChar = texto.split("");
+
+        if (texto.length >= quantidadeCaracter) {
+            novoTexto = "";
+            for (let i = 0; i < quantidadeCaracter; i++) {
+                novoTexto += arrayChar[i];
+            }
+            novoTexto += " ...";
+        }
+
+        return novoTexto;
+    }
+
     return (
         <>
-            <img src={imgAlfinete}  alt =""></img>
-
-            <h3>
-                {LimitarTexto(props.titulo,45)}
-            </h3>
-
-            <p>
-                {LimitarTexto(props.descricao,182)}
-            </p>
-
-            <p>
-                {FormatarValor()}
-            </p>
-
+            <img src={imgAlfinete} alt="" />
+            <h3>{limitadorCaracteres(props.titulo, 45)}</h3>
+            <p>{limitadorCaracteres(props.descricao, 182)}</p>
+            <p>{verificaValor()}</p>
         </>
     )
 }

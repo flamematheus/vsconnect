@@ -29,8 +29,14 @@ function CardDev (props){
             </div>
 
             <div className="techs">
-                {verificarListaTechs()}
+                {verificarListaTechs().map((tech,indice)=>(
+                    <span kay = {indice}>
+                            {tech}
+                    </span>
+                ))}
             </div>
         </div>
-    )
+    );
 }
+
+export default CardDev;
