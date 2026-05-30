@@ -3,7 +3,7 @@ import "./style.css"
 import imglogo from "../../assets/images/logo.svg";
 import imgface from "../../assets/images/facebook.svg";
 import imginsta from "../../assets/images/instagram.svg";
-import imglink from "../../assets/images/linkdin.svg";
+import imglink from "../../assets/images/linkedin.svg";
 
 import { Link } from "react-router-dom";
 
